@@ -4,7 +4,7 @@ geheim.py
 *.mp3
 *.png
 *.jpg
-*.csv
+
 *.pth
 *.pkl
 *.h5

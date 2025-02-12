@@ -16,7 +16,7 @@ response = client.chat.completions.create(
     # model="o3-mini",
     # reasoning_effort="medium",
     messages=[
-        {"role": "system", "content": "Dit is de inhoud van het bestand: " + file_content},
+        {"role": "system", "content": "Dit  is de inhoud van het bestand: " + file_content},
         {"role": "user", "content": vraag}
     ],
     temperature=0.7,
