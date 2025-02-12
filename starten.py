@@ -19,9 +19,19 @@ completion = client.chat.completions.create(
       "content": '''
       JIJ BENT ONDERDEEL VAN EEN SYSTEEM.
 
-      ANTWOORD ALLEEN IN JSON 
+      ANTWOORD ALLEEN IN SQL 
       '''+invoer+''' 
-      
+      neem deze json over voor je sql query
+      {
+    "land": "Duitsland",
+    "hoofdstad": "Berlijn",
+    "bevolking": "83 miljoen",
+    "valuta": "Euro",
+    "regeringsvorm": "Federale republiek",
+    "tijdzone": "CENTRALE EUROPESE TIJD (UTC+1)",
+    "belangrijkste_taak": "Economische grootmacht in Europa met een sterk productie-industrie",
+    "bekende_steden": ["München", "Hamburg", "Keulen", "Frankfurt"]
+}
       '''
     }],
     temperature=1.8,
