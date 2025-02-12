@@ -1,7 +1,7 @@
 import base64
 from openai import OpenAI
 import geheim
-
+#https://0111.nl/lmstemp/l012openaiapi/index.html
 client = OpenAI(api_key=geheim.key())
 
 def encode_image(image_path):
