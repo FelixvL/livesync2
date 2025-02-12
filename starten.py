@@ -1,44 +1,27 @@
 import os
 import openai
-
 import geheim
-
-# https://0111.nl/ai/ai.pdf
-
-# De toegankelijke https://www.youtube.com/watch?v=uCIa6V4uF84
-
-# De pittige technisch https://www.youtube.com/watch?v=flXrLGPY3SU
 
 from openai import OpenAI
 client = OpenAI(api_key=geheim.key())
-invoer = input("Noem een land ")
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
-  messages=[{
-      "role": "system",
-      "content": '''
-      JIJ BENT ONDERDEEL VAN EEN SYSTEEM.
-        vooraf geen ```sql  of afsluitend geen ```
-      ANTWOORD ALLEEN IN SQL 
 
-      MAAK DIT LAND AAN:
-      '''+invoer+''' 
-      neem deze json over voor je sql query maar dan voor bovenstaand land
-      {
-    "land": "Duitsland",
-    "hoofdstad": "Berlijn",
-    "bevolking": "83 miljoen",
-    "valuta": "Euro",
-    "regeringsvorm": "Federale republiek",
-    "tijdzone": "CENTRALE EUROPESE TIJD (UTC+1)",
-    "belangrijkste_taak": "Economische grootmacht in Europa met een sterk productie-industrie",
-    "bekende_steden": ["München", "Hamburg", "Keulen", "Frankfurt"]
-}
-      '''
-    }],
-    temperature=0.8,
-    max_completion_tokens=1024
+with open("films.csv", "r") as file:
+    file_content = file.read()
+
+# print(file_content)
+
+vraag = input("stel een vraag over het bestand: ")
+response = client.chat.completions.create(
+    model="gpt-4o",
+    # model="o3-mini",
+    # reasoning_effort="medium",
+    messages=[
+        {"role": "system", "content": "Dit is de inhoud van het bestand: " + file_content},
+        {"role": "user", "content": vraag}
+    ],
+    temperature=0.7,
+    max_completion_tokens=15000,
 )
 
-# print(completion)
-print(completion.choices[0].message.content)
+# print(response)
+print(response.choices[0].message.content)
