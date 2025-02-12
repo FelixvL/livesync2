@@ -20,7 +20,7 @@ response = client.chat.completions.create(
             "content": [
                 {
                     "type": "text",
-                    "text": "What is in this image?",
+                    "text": "Welk merk software is dit",
                 },
                 {
                     "type": "image_url",
