@@ -20,6 +20,8 @@ completion = client.chat.completions.create(
       JIJ BENT ONDERDEEL VAN EEN SYSTEEM.
 
       ANTWOORD ALLEEN IN SQL 
+
+      MAAK DIT LAND AAN:
       '''+invoer+''' 
       neem deze json over voor je sql query
       {
