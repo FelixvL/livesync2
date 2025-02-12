@@ -11,7 +11,7 @@ completion = client.chat.completions.create(
       "role": "system",
       "content": '''maak in html een website over: '''+invoer+''''''
     }],
-    temperature=0.8,
+    temperature=1.4,
     max_completion_tokens=5000
 )
 
