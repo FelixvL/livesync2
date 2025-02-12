@@ -11,7 +11,7 @@ response = client.chat.completions.create(
       "content": ""+invoer
     }],
     temperature=0.7,
-    max_tokens=5000,
+    max_tokens=5000
    # stream=True
 )
 
