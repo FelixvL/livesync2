@@ -11,7 +11,7 @@ completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[{
       "role": "system",
-      "content": ''' Ik wil de hoofdstad weten van: '''+invoer+''''''
+      "content": ''' Ik wil de hoofdstad weten van: '''+invoer+''' als je vermoed dat het land niet bestaat, zeg dat dan'''
     }],
     temperature=0.8,
     max_completion_tokens=1024
