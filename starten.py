@@ -36,7 +36,7 @@ completion = client.chat.completions.create(
 }
       '''
     }],
-    temperature=1.8,
+    temperature=0.8,
     max_completion_tokens=1024
 )
 
