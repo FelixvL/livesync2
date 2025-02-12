@@ -8,7 +8,7 @@ invoer = input("Waar wil je een afbeelding over? ")
 for x in range(10):
     response = client.images.generate(
     model="dall-e-3",
-    prompt=''''''+invoer+'''''',
+    prompt=''''''+invoer+''' alsof het met potlood getekend is''',
     n=1,
     size="1792x1024",
     style="vivid",
