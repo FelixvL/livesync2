@@ -23,7 +23,7 @@ completion = client.chat.completions.create(
 
       MAAK DIT LAND AAN:
       '''+invoer+''' 
-      neem deze json over voor je sql query
+      neem deze json over voor je sql query maar dan voor bovenstaand land
       {
     "land": "Duitsland",
     "hoofdstad": "Berlijn",
