@@ -8,7 +8,7 @@ response = client.audio.speech.create(
   model="tts-1-hd",
   voice="onyx",
   input='''
-    hier bij tmc hebben we een programmeer avond
+    hier bij tmc hebben we een programmeer avond, spreek in het duits
   ''',
   speed=2.0
 )
