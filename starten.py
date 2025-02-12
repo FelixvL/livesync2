@@ -1,17 +1,19 @@
 from openai import OpenAI
+import webbrowser
 import geheim
 
 client = OpenAI(api_key=geheim.key())
 
-speech_file_path = "speech.mp3"
-response = client.audio.speech.create(
-  model="tts-1-hd",
-  voice="onyx",
-  input='''
-    hier bij tmc hebben we een programmeer avond, spreek in het duits
-  ''',
-  speed=2.0
+invoer = input("Waar wil je een afbeelding over? ")
+
+response = client.images.generate(
+  model="dall-e-3",
+  prompt=''''''+invoer+'''''',
+  n=1,
+  size="1792x1024",
+  style="vivid",
+  quality="hd"
 )
 
-with open(speech_file_path, "wb") as f:
-    f.write(response.content)
+print(response)
+webbrowser.open(response.data[0].url)
