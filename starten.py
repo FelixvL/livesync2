@@ -1,27 +1,26 @@
-import os
-import openai
+from openai import OpenAI
 import geheim
 
-from openai import OpenAI
 client = OpenAI(api_key=geheim.key())
 
-with open("films.csv", "r") as file:
-    file_content = file.read()
+invoer = input("kies een onderwerp? ")
 
-# print(file_content)
-
-vraag = input("stel een vraag over het bestand: ")
-response = client.chat.completions.create(
-    model="gpt-4o",
-    # model="o3-mini",
-    # reasoning_effort="medium",
-    messages=[
-        {"role": "system", "content": "Dit  is de inhoud van het bestand: " + file_content},
-        {"role": "user", "content": vraag}
-    ],
-    temperature=0.7,
-    max_completion_tokens=15000,
+completion = client.chat.completions.create(
+  model="gpt-4o",
+  messages=[{
+      "role": "system",
+      "content": ''''''+invoer+''''''
+    }],
+    temperature=0.8,
+    max_completion_tokens=5000
 )
 
-# print(response)
-print(response.choices[0].message.content)
+# print(completion)
+
+print(completion.choices[0].message.content)
+
+tekst = completion.choices[0].message.content
+bestandsnaam = "voorbeeld.txt"
+
+with open(bestandsnaam, "w") as bestand:
+    bestand.write(tekst)
