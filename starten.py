@@ -18,7 +18,7 @@ completion = client.chat.completions.create(
       "role": "system",
       "content": ''' Noem de vijf belangrijkste toeristische attracties van: '''+invoer+''' vertel over iedere attractie het belangrijkste. en vertel aan het einde dat ze de reis moeten boeken op www.go.nl. GEEF ALTIJD ANTWOORD IN HET DUITS'''
     }],
-    temperature=1.9,
+    temperature=0.8,
     max_completion_tokens=1024
 )
 
