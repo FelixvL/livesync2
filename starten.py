@@ -6,7 +6,7 @@ import geheim
 
 from openai import OpenAI
 client = OpenAI(api_key=geheim.key())
-invoer = input("Noem een stad ")
+invoer = input("Noem een land ")
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[{
