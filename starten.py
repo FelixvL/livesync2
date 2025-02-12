@@ -1,19 +1,14 @@
 from openai import OpenAI
-import webbrowser
 import geheim
 
 client = OpenAI(api_key=geheim.key())
 
-invoer = input("Waar wil je een afbeelding over? ")
-for x in range(10):
-    response = client.images.generate(
-    model="dall-e-3",
-    prompt=''''''+invoer+''' alsof het met potlood getekend is''',
-    n=1,
-    size="1792x1024",
-    style="vivid",
-    quality="hd"
-    )
+# https://audio-samples.github.io/#section-1
 
-    print(response)
-    webbrowser.open(response.data[0].url)
+audio_file = open("geluid.mp3", "rb")
+transcript = client.audio.transcriptions.create(
+  model="whisper-1",
+  file=audio_file
+)
+
+print(transcript)
