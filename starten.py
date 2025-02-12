@@ -16,9 +16,15 @@ completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[{
       "role": "system",
-      "content": ''' Noem de vijf belangrijkste toeristische attracties van: '''+invoer+''' vertel over iedere attractie het belangrijkste. en vertel aan het einde dat ze de reis moeten boeken op www.go.nl. GEEF ALTIJD ANTWOORD IN HET DUITS'''
+      "content": '''
+      JIJ BENT ONDERDEEL VAN EEN SYSTEEM.
+
+      ANTWOORD ALLEEN IN JSON 
+      '''+invoer+''' 
+      
+      '''
     }],
-    temperature=0.8,
+    temperature=1.8,
     max_completion_tokens=1024
 )
 
