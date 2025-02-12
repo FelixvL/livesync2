@@ -18,7 +18,7 @@ completion = client.chat.completions.create(
       "role": "system",
       "content": '''
       JIJ BENT ONDERDEEL VAN EEN SYSTEEM.
-
+        vooraf geen ```sql  of afsluitend geen ```
       ANTWOORD ALLEEN IN SQL 
 
       MAAK DIT LAND AAN:
