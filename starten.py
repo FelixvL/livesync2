@@ -9,7 +9,7 @@ completion = client.chat.completions.create(
   model="gpt-4o",
   messages=[{
       "role": "system",
-      "content": '''maak in html een website over:'''+invoer+''''''
+      "content": '''maak in html een website over: '''+invoer+''''''
     }],
     temperature=0.8,
     max_completion_tokens=5000
