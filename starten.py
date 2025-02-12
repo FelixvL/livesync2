@@ -17,5 +17,5 @@ completion = client.chat.completions.create(
     max_completion_tokens=1024
 )
 
-print(completion)
-# print(completion.choices[0].message.content)
+# print(completion)
+print(completion.choices[0].message.content)
