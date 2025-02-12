@@ -3,6 +3,11 @@ import openai
 
 import geheim
 
+# https://0111.nl/ai/ai.pdf
+
+# De toegankelijke https://www.youtube.com/watch?v=uCIa6V4uF84
+
+# De pittige technisch https://www.youtube.com/watch?v=flXrLGPY3SU
 
 from openai import OpenAI
 client = OpenAI(api_key=geheim.key())
