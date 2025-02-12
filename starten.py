@@ -11,9 +11,9 @@ response = client.chat.completions.create(
       "content": ""+invoer
     }],
     temperature=0.7,
-    max_tokens=5000
-   # stream=True
+    max_tokens=5000,
+    stream=True
 )
-print(response.choices[0].delta.content)
-#for chunk in response:
- #   print(chunk.choices[0].delta.content, end="", flush=True)
+
+for chunk in response:
+    print(chunk.choices[0].delta.content, end="", flush=True)
