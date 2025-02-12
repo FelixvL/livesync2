@@ -3,17 +3,15 @@ import geheim
 
 client = OpenAI(api_key=geheim.key())
 
-invoer = input("Stel hier uw vraag? ")
-response = client.chat.completions.create(
-  model="gpt-4o",
-  messages=[{
-      "role": "system",
-      "content": ""+invoer
-    }],
-    temperature=0.7,
-    max_tokens=5000,
-    stream=True
+speech_file_path = "speech.mp3"
+response = client.audio.speech.create(
+  model="tts-1-hd",
+  voice="onyx",
+  input='''
+    hier bij tmc hebben we een programmeer avond
+  ''',
+  speed=1.0
 )
 
-for chunk in response:
-    print(chunk.choices[0].delta.content, end="", flush=True)
+with open(speech_file_path, "wb") as f:
+    f.write(response.content)
