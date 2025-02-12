@@ -3,24 +3,17 @@ import geheim
 
 client = OpenAI(api_key=geheim.key())
 
-invoer = input("kies een onderwerp? ")
-
-completion = client.chat.completions.create(
+invoer = input("Stel hier uw vraag? ")
+response = client.chat.completions.create(
   model="gpt-4o",
   messages=[{
       "role": "system",
-      "content": '''maak in html een website over: '''+invoer+''''''
+      "content": ""+invoer
     }],
-    temperature=1.4,
-    max_completion_tokens=5000
+    temperature=0.7,
+    max_tokens=5000,
+    stream=True
 )
 
-# print(completion)
-
-print(completion.choices[0].message.content)
-
-tekst = completion.choices[0].message.content
-bestandsnaam = "voorbeeld.html"
-
-with open(bestandsnaam, "w") as bestand:
-    bestand.write(tekst)
+for chunk in response:
+    print(chunk.choices[0].delta.content, end="", flush=True)
