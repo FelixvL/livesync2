@@ -21,7 +21,7 @@ def hello_world_tweede():
 def hello_world_derde(naam):
     return f"hoi: {naam}"
 
-@app.route("/vierde/<>")
+@app.route("/vierde")
 def vierde():
     fiets1 = Fiets("Gazelle")
     fiets2 = Fiets("batavus2")
