@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color:red;
+            background-color: green;
+        }
+    </style>
+    <script>
+        function huppakee(){
+            fetch("http://127.0.0.1:5000/vierde")
+            .then(r => r.json())
+            .then(d => document.getElementById("hetmerk").innerHTML = d.merk)
+        }
+    </script>
+</head>
+<body>
+    <h1>Voorbeeld</h1>
+    <button onclick="huppakee()">Klik hier</button>
+    <div id="hetmerk"></div>
+</body>
+</html>
