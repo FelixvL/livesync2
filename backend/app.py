@@ -1,41 +1,16 @@
 from flask import Flask, jsonify,request
-from dataclasses import dataclass
 from flask_cors import CORS
+
+import auto_uit_db
 
 app = Flask(__name__)
 CORS(app)
 
-@dataclass
-class Fiets:
-    merk:str
+@app.route("/get_alle_autos")
+def get_alle_autos_ep():
+    return jsonify(auto_uit_db.get_all_autos())
 
-@app.route("/")
-def hello_world():
-    return "<h1>Hello, Weer wat FGWW!</h1>"
-
-@app.route("/tweede")
-def hello_world_tweede():
-    return "<p>Hello, felix</p>"
-
-@app.route("/derde/<naam>")
-def hello_world_derde(naam):
-    return f"hoi: {naam}"
-
-@app.route("/vierde")
-def vierde():
-    fiets1 = Fiets("Gazelle")
-    fiets2 = Fiets("batavus2")
-    return jsonify(fiets1)   
-
-@app.route("/vijfde", methods=["GET","POST"])
-def vijfde():
-    if request.method == "GET":
-        return "no"
-    return "yes"
-
-@app.route("/zesde", methods=["POST"])
-def zesde():
-    print(request.json)
-    print(request.json.get("naam"))
-    print(request.json.get("naam").upper())
-    return "yes"+request.json.get("naam")
+@app.route("/maak_auto", methods=["POST"])
+def maak_auto_ep():
+    auto_uit_db.maak_auto()
+    return jsonify({"message": "Auto succesvol gemaakt!"}), 201

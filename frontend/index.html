@@ -1,26 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        h1{
-            color:red;
-            background-color: green;
-        }
-    </style>
-    <script>
-        function huppakee(){
-            fetch("http://127.0.0.1:5000/vierde")
-            .then(r => r.json())
-            .then(d => document.getElementById("hetmerk").innerHTML = d.merk)
-        }
-    </script>
+    <title> Auto's </title>
 </head>
 <body>
-    <h1>Voorbeeld</h1>
-    <button onclick="huppakee()">Klik hier</button>
-    <div id="hetmerk"></div>
+
+<h1>Auto toevoegen</h1>
+
+Merk: <input type="text" id="merk"><br><br>
+Model: <input type="text" id="model"><br><br>
+Bouwjaar: <input type="number" id="bouwjaar"><br><br>
+Prijs: <input type="number" id="prijs"><br><br>
+Kenteken: <input type="text" id="kenteken"><br><br>
+
+<button onclick="maakAuto()">Opslaan</button>
+
+<hr>
+
+<h2>Alle auto's</h2>
+<button onclick="laadAutos()">toon lijst</button>
+
+<ul id="autoLijst"></ul>
+
+<script>
+    var API_URL = "http://127.0.0.1:5000";
+
+    function maakAuto() {
+        var auto = {
+            merk: document.getElementById("merk").value,
+            model: document.getElementById("model").value,
+            bouwjaar: document.getElementById("bouwjaar").value,
+            prijs: document.getElementById("prijs").value,
+            kenteken: document.getElementById("kenteken").value
+        };
+
+        fetch(API_URL + "/maak_auto", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(auto)
+        })
+        .then(r => r.json())
+        .then(d => {
+            alert("Auto opgeslagen!");
+            laadAutos();
+        });
+    }
+
+    function laadAutos() {
+        fetch(API_URL + "/get_alle_autos")
+        .then(r => r.json())
+        .then(data => toonautos(data));
+            
+        function toonautos(autos) {
+            var lijst = document.getElementById("autoLijst");
+            lijst.innerHTML = "";
+
+            for (var i = 0; i < autos.length; i++) {
+                var auto = autos[i];
+
+                var item = document.createElement("li");
+                item.innerHTML =
+                    auto.merk + " " +
+                    auto.model + " - " +
+                    auto.bouwjaar + " - €" +
+                    auto.prijs + " - " +
+                    auto.kenteken;
+
+                lijst.appendChild(item);
+            }
+        }
+    }
+
+</script>
+
 </body>
 </html>
